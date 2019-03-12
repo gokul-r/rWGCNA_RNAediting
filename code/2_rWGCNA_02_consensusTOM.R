@@ -117,6 +117,8 @@ for (i in 1:ceiling(nGenes/bsize))
 dim(consensusTOM_final)  ###should be a square matrix
 
 save(consensusTOM_final,file=paste0(outputDirData,"consensusTOM_final.RData"))
+} else {
+	load(paste0(outputDirData,"consensusTOM_final.RData"))	
 }
 
 ####Analysing consensus TOM
@@ -164,7 +166,6 @@ load(paste0(outputDirData,"DendroTraits_SP9.RData")) # Load in: geneSigsColor
 ################
 
 load(paste0(outputDirData,"multiData_Resample.RData"))
-load(paste0(outputDirData,"consensusTOM_final.RData"))
 
 if (!file.exists(paste0(outputDirData,"consensusTreeCut.RData"))) {
 consTOM=consensusTOM_final;
@@ -192,12 +193,14 @@ mColorh <- mLabelh <- colorLabels <- NULL
 
 rm(consTOM, dissTOM)
 save(consTree,mColorh,mLabelh,merged,file=paste0(outputDirData,"consensusTreeCut.RData"))
+} else {
+	load(paste0(outputDirData,"consensusTreeCut.RData"))	
 }
 
 ###################################
-load(paste0(outputDirData,"consensusTreeCut.RData"))
 
-	    mColorh1=cbind(mColorh,geneSigsColor])
+
+mColorh1=cbind(mColorh,geneSigsColor])
 
 mLabelh1=c(mLabelh,rownames(geneSigsColor))
 
