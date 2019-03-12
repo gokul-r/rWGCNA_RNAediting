@@ -30,7 +30,7 @@ names(periods) = c("8PCW","9PCW","12PCW","13PCW","16PCW","17PCW","19PCW","21PCW"
 metaData[,"period"] <- apply(metaData,1,function(x) periods[names(periods)==x["Age"]])
 
 # Load data matrix
-dataMatrix <- read.table("../data/dataMatrix.txt",sep="\t",header=TRUE,row.name=1)
+dataMatrix <- read.table(gzfile("../data/dataMatrix.txt.gz"),sep="\t",header=TRUE,row.name=1)
 # Filter metadata to only rows present in data matrix
 metaData <- metaData[colnames(dataMatrix),]
 metaData[,"GrossRegion"] <- apply(metaData,1,function(x) regions[names(regions)==x["Region"]])
